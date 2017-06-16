@@ -1,19 +1,13 @@
+/* jshint unused:false */
+
 const Promise = require('bluebird')
-const feathers = require('feathers')
 const chai = require('chai')
 const expect = chai.expect
 
+const App = require('../../__mocks/feathers.mock')
+const app = App()
 const Service = require('../../../server/services/domain/commands/individualAnswerSurveyCommand').Service
 
-const app = feathers()
-
-app.bus = {
-  send (chanel, message) { }
-}
-app.error = (message) => {
-}
-app.info = (message) => {
-}
 app.use('command/individualAnswerSurvey', new Service())
 app.use('api/answers', {
   create (data) {
@@ -87,12 +81,12 @@ describe('[unit] command individualAnswerSurvey', function () {
       done()
     })
   })
-  it('should sucess create a new answer from null', (done) => {
+  it('should success create a new answer from null', (done) => {
     app.service('command/individualAnswerSurvey').create({individual: 'individual', campaign_id: 'campaign_id', campaign_name: 'campaign_name', survey_id: 'survey_id', question: 'question'}).then(() => {
       done()
     }).catch(done)
   })
-  it('should sucess create a new answer from array', (done) => {
+  it('should success create a new answer from array', (done) => {
     app.service('command/individualAnswerSurvey').create({individual: 'individual', campaign_id: 'campaign_id', campaign_name: 'campaign_name', survey_id: 'survey_id', question: 'question', answer: ['1']}).then(() => {
       done()
     }).catch(done)

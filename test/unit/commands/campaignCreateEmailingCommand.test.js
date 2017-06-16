@@ -1,19 +1,13 @@
+/* jshint unused:false */
+
 const Promise = require('bluebird')
-const feathers = require('feathers')
 const chai = require('chai')
 const expect = chai.expect
 
+const App = require('../../__mocks/feathers.mock')
+const app = App()
 const Service = require('../../../server/services/domain/commands/campaignCreateEmailingCommand').Service
 
-const app = feathers()
-
-app.bus = {
-  send (chanel, message) { }
-}
-app.error = (message) => {
-}
-app.info = (message) => {
-}
 app.use('command/campaignCreateEmailing', new Service())
 app.use('api/individuals', {
   find (params) {
@@ -69,7 +63,7 @@ describe('[unit] command campaignCreateEmailing', function () {
       done()
     })
   })
-  it('should sucess', (done) => {
+  it('should success', (done) => {
     app.service('command/campaignCreateEmailing').create({email: 'test@abibao.com', template: 'template', url: 'http://test.abibao.com'}).then((result) => {
       expect(result).equal(true)
       done()

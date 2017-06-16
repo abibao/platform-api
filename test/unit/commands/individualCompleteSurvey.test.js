@@ -1,17 +1,11 @@
-const Promise = require('bluebird')
-const feathers = require('feathers')
+/* jshint unused:false */
 
+const Promise = require('bluebird')
+
+const App = require('../../__mocks/feathers.mock')
+const app = App()
 const Service = require('../../../server/services/domain/commands/individualCompleteSurveyCommand').Service
 
-const app = feathers()
-
-app.bus = {
-  send (chanel, message) { }
-}
-app.error = (message) => {
-}
-app.info = (message) => {
-}
 app.use('command/individualCompleteSurvey', new Service())
 app.use('api/surveys', {
   patch (id, data) {

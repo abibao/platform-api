@@ -1,22 +1,16 @@
+/* jshint unused:false */
+
 const Promise = require('bluebird')
-const feathers = require('feathers')
 const chai = require('chai')
 const expect = chai.expect
 const eraro = require('eraro')({package: 'platform.abibao.com'})
 
+const App = require('../../__mocks/feathers.mock')
+const app = App()
 const Service = require('../../../server/services/domain/commands/individualAffectSurveyCommand').Service
-
-const app = feathers()
 
 let surveys = []
 
-app.bus = {
-  send (chanel, message) { }
-}
-app.error = (message) => {
-}
-app.info = (message) => {
-}
 app.use('command/individualAffectSurvey', new Service())
 app.use('command/postOnSlackWithWebhook', {
   create (data) {

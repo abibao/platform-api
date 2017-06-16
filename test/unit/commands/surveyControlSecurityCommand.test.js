@@ -1,23 +1,13 @@
-const feathers = require('feathers')
+/* jshint unused:false */
+
 const chai = require('chai')
 const expect = chai.expect
 const eraro = require('eraro')({package: 'platform.abibao.com'})
 
+const App = require('../../__mocks/feathers.mock')
+const app = App()
 const Service = require('../../../server/services/domain/commands/surveyControlSecurityCommand').Service
 
-const app = feathers()
-
-app.bus = {
-  send (chanel, message) {
-    console.assert(chanel, message)
-  }
-}
-app.error = (message) => {
-  console.assert(message)
-}
-app.info = (message) => {
-  console.assert(message)
-}
 app.get = (param) => {
   switch (param) {
     case 'sendgrid':
@@ -84,7 +74,7 @@ describe('[unit] command surveyControlSecurity', function () {
       done()
     })
   })
-  it('should sucesss with email not in database', (done) => {
+  it('should success with email not in database', (done) => {
     app.service('command/surveyControlSecurity').create({email: 'test@abibao.com', campaign: 'campaign'}).then((result) => {
       expect(result).to.have.property('connected').and.equal(false)
       expect(result).to.have.property('urn').and.equal('urn:individual:test')

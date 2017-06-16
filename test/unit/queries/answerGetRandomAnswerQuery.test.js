@@ -1,19 +1,13 @@
+/* jshint unused:false */
+
 const Promise = require('bluebird')
-const feathers = require('feathers')
 const chai = require('chai')
 const expect = chai.expect
 
+const App = require('../../__mocks/feathers.mock')
+const app = App()
 const Service = require('../../../server/services/domain/queries/answerGetRandomAnswerQuery').Service
 
-const app = feathers()
-
-app.bus = {
-  send (chanel, message) { }
-}
-app.error = (message) => {
-}
-app.info = (message) => {
-}
 app.get = (param) => {
   switch (param) {
     case 'postgres':

@@ -1,18 +1,12 @@
-const feathers = require('feathers')
+/* jshint unused:false */
+
 const chai = require('chai')
 const expect = chai.expect
 
+const App = require('../../__mocks/feathers.mock')
+const app = App()
 const Service = require('../../../server/services/domain/commands/postOnSlackWithWebhookCommand').Service
 
-const app = feathers()
-
-app.bus = {
-  send (chanel, message) { }
-}
-app.error = (message) => {
-}
-app.info = (message) => {
-}
 app.get = (name) => {
   return {
     webhook: 'http://'

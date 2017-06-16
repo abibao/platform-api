@@ -1,10 +1,11 @@
-const feathers = require('feathers')
+/* jshint unused:false */
+
 const chai = require('chai')
 const expect = chai.expect
 
+const App = require('../../__mocks/feathers.mock')
+const app = App()
 const Service = require('../../../server/services/domain/commands/sendgridRefreshAllTemplatesCommand').Service
-
-const app = feathers()
 
 app.bus = {
   send (chanel, message) { }
