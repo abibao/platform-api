@@ -61,7 +61,7 @@
     "serve-favicon": "2.4.3",
     "servicebus": "2.0.10",
     "servicebus-retry": "0.0.11",
-    "uuid": "3.0.1"
+    "uuid": "3.1.0"
   },
   "devDependencies": {
     "chai": "4.0.2",

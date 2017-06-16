@@ -5,18 +5,17 @@ machine:
     version: 6
   services:
     - docker
-  pre:
-    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
-    - docker --version
-dependencies:
-  pre:
-    - curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > ../bin/docker-compose && chmod +x ../bin/docker-compose
-    - docker-compose --version
+    - rabbitmq-server
+    - couchbase-server
+    - logstash
+
 test:
-  pre:
-    - sudo service mysql stop; sleep 5
-    - sudo service postgresql stop; sleep 5
-    - sudo service couchdb stop; sleep 5
   override:
     - npm install
     - make test
+
+deployement:
+  demo:
+    branch: demo
+    commands:
+      - curl -L http://jenkins.internal.abibao.com/job/Platform%20API%20-%20Demo/build?token=JS25U5Y6JJAKZT86YN2WVY3WVU53DYVPNF6AX4J4
