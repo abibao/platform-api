@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test:standard": "node_modules/.bin/standard config/**/*.js server/**/*.js test/**/*.js --verbose | node_modules/.bin/snazzy",
-    "test:coverage": "node_modules/.bin/mocha --opts .mocharc"
+    "test:standard": "node_modules/.bin/standard config/**/*.js server/**/*.js test/**/*.js | node_modules/.bin/snazzy",
+    "test:coverage": "node_modules/.bin/nyc --reporter=lcov --reporter=text node_modules/.bin/mocha --opts .mocharc"
   },
   "repository": {
     "type": "git",
@@ -65,10 +65,10 @@
   },
   "devDependencies": {
     "chai": "4.0.2",
-    "istanbul": "0.4.5",
     "mocha": "3.4.2",
     "mocha-standard": "1.0.0",
     "nodemon": "1.11.0",
+    "nyc": "11.0.2",
     "snazzy": "7.0.0",
     "standard": "10.0.2"
   },
@@ -79,11 +79,6 @@
       "describe",
       "it",
       "expect"
-    ],
-    "ignore": [
-      "docker/**",
-      "coverage/**",
-      "volumes/**"
     ]
   }
 }

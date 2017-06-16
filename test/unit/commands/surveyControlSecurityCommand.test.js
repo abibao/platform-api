@@ -8,11 +8,15 @@ const Service = require('../../../server/services/domain/commands/surveyControlS
 const app = feathers()
 
 app.bus = {
-  send (chanel, message) { }
+  send (chanel, message) {
+    console.assert(chanel, message)
+  }
 }
 app.error = (message) => {
+  console.assert(message)
 }
 app.info = (message) => {
+  console.assert(message)
 }
 app.get = (param) => {
   switch (param) {

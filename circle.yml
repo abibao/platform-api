@@ -19,4 +19,4 @@ test:
     - sudo service couchdb stop; sleep 5
   override:
     - npm install
-    - npm test
+    - make test
