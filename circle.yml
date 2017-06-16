@@ -1,0 +1,18 @@
+machine:
+  timezone:
+    Europe/Paris
+  node:
+    version: 6
+  services:
+    - docker
+
+test:
+  override:
+    - npm install
+    - make test
+
+deployement:
+  rece:
+    branch: rece
+    commands:
+      - curl -L http://jenkins.internal.abibao.com/job/Platform%20API%20-%20Rece/build?token=JS25U5Y6JJAKZT86YN2WVY3WVU53DYVPNF6AX4J4
