@@ -6,7 +6,7 @@ machine:
   services:
     - docker
     - rabbitmq-server
-    - couchbase-server
+    - couchdb
     - logstash
 
 test:
