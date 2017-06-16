@@ -7,7 +7,6 @@ machine:
     - docker
     - rabbitmq-server
     - couchdb
-    - logstash
 
 test:
   override:
