@@ -11,8 +11,16 @@ test:
     - npm install
     - make test
 
-deployement:
+deployment:
+  prod:
+    branch: master
+    commands:
+      - docker build -t abibao/abibao-platform-api .
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push docker.io/abibao/abibao-platform-api
   rece:
     branch: rece
     commands:
-      - curl -L http://jenkins.internal.abibao.com/job/Platform%20API%20-%20Rece/build?token=JS25U5Y6JJAKZT86YN2WVY3WVU53DYVPNF6AX4J4
+      - docker build -t abibao/abibao-platform-api:rece .
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push docker.io/abibao/abibao-platform-api:rece
