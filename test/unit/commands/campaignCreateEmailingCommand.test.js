@@ -1,4 +1,4 @@
-/* eslint unused:false */
+/* eslint unused:0 */
 
 const Promise = require('bluebird')
 const chai = require('chai')
