@@ -1,3 +1,7 @@
+# PLATFORM-API
+
+[![CodeFactor](https://www.codefactor.io/repository/github/abibao/platform-api/badge/master)](https://www.codefactor.io/repository/github/abibao/platform-api/overview/master)
+
 ## URL
 api.platform.abibao.com.local.net
 

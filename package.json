@@ -2,9 +2,9 @@
   "name": "platform-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:standard": "node_modules/.bin/standard config/**/*.js server/**/*.js test/**/*.js --verbose | node_modules/.bin/snazzy",
+    "test:coverage": "node_modules/.bin/mocha --opts .mocharc"
   },
   "repository": {
     "type": "git",
@@ -64,6 +64,26 @@
     "uuid": "3.0.1"
   },
   "devDependencies": {
-    "nodemon": "1.11.0"
+    "chai": "4.0.2",
+    "istanbul": "0.4.5",
+    "mocha": "3.4.2",
+    "mocha-standard": "1.0.0",
+    "nodemon": "1.11.0",
+    "snazzy": "7.0.0",
+    "standard": "10.0.2"
+  },
+  "standard": {
+    "globals": [
+      "before",
+      "after",
+      "describe",
+      "it",
+      "expect"
+    ],
+    "ignore": [
+      "docker/**",
+      "coverage/**",
+      "volumes/**"
+    ]
   }
 }
