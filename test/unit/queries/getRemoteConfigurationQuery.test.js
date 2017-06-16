@@ -1,4 +1,4 @@
-/* jshint unused:false */
+/* eslint unused:false */
 
 const chai = require('chai')
 const expect = chai.expect
