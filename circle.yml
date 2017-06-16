@@ -5,8 +5,6 @@ machine:
     version: 6
   services:
     - docker
-    - rabbitmq-server
-    - couchdb
 
 test:
   override:
@@ -14,7 +12,7 @@ test:
     - make test
 
 deployement:
-  demo:
-    branch: demo
+  rece:
+    branch: rece
     commands:
-      - curl -L http://jenkins.internal.abibao.com/job/Platform%20API%20-%20Demo/build?token=JS25U5Y6JJAKZT86YN2WVY3WVU53DYVPNF6AX4J4
+      - curl -L http://jenkins.internal.abibao.com/job/Platform%20API%20-%20Rece/build?token=JS25U5Y6JJAKZT86YN2WVY3WVU53DYVPNF6AX4J4
