@@ -16,7 +16,7 @@ class GoogleVerifier extends Verifier {
       }
     })
     if (authorized === false) {
-      return req.res.redirect(this.app.get('domains').admin + '/admin/login?error=NotAuthorized')
+      return req.res.redirect(this.app.get('domains').admin + '/?error=NotAuthorized')
     }
     //
     profile.picture = profile.photos[0].value || 'default.jpg'
@@ -46,7 +46,7 @@ class GoogleVerifier extends Verifier {
 }
 
 const GoogleHandler = (req, res) => {
-  res.redirect(req.payload.domain + '/admin/login?accessToken=' + req.payload.accessToken)
+  res.redirect(req.payload.domain + '/?accessToken=' + req.payload.accessToken)
 }
 
 nconf.argv().env().file({ file: 'nconf.json' })
@@ -127,7 +127,7 @@ module.exports = {
       name: 'google',
       Strategy: GoogleStrategy,
       Verifier: GoogleVerifier,
-      callbackURL: nconf.get('ABIBAO_DOMAIN_API') ? nconf.get('ABIBAO_DOMAIN_API') + '/auth/google/callback' : 'http://localhost:3000/auth/google/callback',
+      callbackURL: nconf.get('ABIBAO_DOMAIN_API') ? nconf.get('ABIBAO_DOMAIN_API') + '/auth/google/callback' : 'https://api.platform.abibao.com.local.net/auth/google/callback',
       entity: 'user',
       service: 'users',
       passReqToCallback: true,
