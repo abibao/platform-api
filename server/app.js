@@ -60,6 +60,7 @@ const corsOptions = {
 }
 
 app.use(compress())
+  .use('/', serveStatic(app.get('public')))
   .use('/wp_content', serveStatic(dirpathUpload))
   .use('/uploads', blobService({Model: blobStorage}))
   .use(cors(corsOptions))
