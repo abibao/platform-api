@@ -1,4 +1,4 @@
-.PHONY: default up down test start
+.PHONY: default up down
 
 default: up
 
@@ -8,11 +8,3 @@ up:
 
 down:
 	docker-compose down;
-
-test:
-	rm -rf coverage;
-	npm run test:standard;
-	npm run test:coverage;
-
-start:
-	docker-compose exec api node_modules/.bin/nodemon --config nodemon.json server/start.js

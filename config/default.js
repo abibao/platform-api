@@ -82,8 +82,8 @@ module.exports = {
   rabbitmq: {
     host: nconf.get('ABIBAO_RABBITMQ_HOST') || 'rabbitmq',
     port: nconf.get('ABIBAO_RABBITMQ_PORT') || 5672,
-    user: nconf.get('ABIBAO_RABBITMQ_USER') || 'guest',
-    pass: nconf.get('ABIBAO_RABBITMQ_PASSWORD') || 'guest'
+    user: nconf.get('ABIBAO_RABBITMQ_USER') || 'infra',
+    pass: nconf.get('ABIBAO_RABBITMQ_PASSWORD') || 'infra'
   },
   sendgrid: {
     key: nconf.get('ABIBAO_SENDGRID_KEY') || 'sendgrid',

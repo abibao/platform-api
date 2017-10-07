@@ -2,14 +2,21 @@ machine:
   timezone:
     Europe/Paris
   node:
-    version: 6
+    version: 8
   services:
     - docker
 
+dependencies:
+  pre:
+    - npm uninstall -g npm
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+  override:
+    - yarn install
+
 test:
   override:
-    - npm install
-    - make test
+    - yarn test:standard
+    - yarn test:coverage
 
 deployment:
   prod:

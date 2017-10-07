@@ -11,47 +11,10 @@ services:
       NODE_ENV: development
     command: "tail -F -n0 /etc/hosts"
     networks:
-      - proxy
-
-  logstash:
-    image: library/logstash:5.4.0-alpine
-    command: -f /etc/logstash/conf.d/
-    volumes:
-      - ./docker/logstash/config:/etc/logstash/conf.d
-    networks:
-      - proxy
-
-  couchdb:
-    image: library/couchdb:1.6
-    environment:
-      COUCHDB_USER: infra
-      COUCHDB_PASSWORD: infra
-    volumes:
-      - ./docker/couchdb/default.d:/usr/local/etc/couchdb/default.d
-      - ./volumes/couchdb:/usr/local/var/lib/couchdb
-    networks:
-      - proxy
-
-  postgres:
-    image: library/postgres:9.5-alpine
-    environment:
-      POSTGRES_USER: infra
-      POSTGRES_PASSWORD: infra
-      POSTGRES_DB: infra
-    volumes:
-      - ./volumes/postgresql/data:/var/lib/postgresql/data
-    networks:
-      - proxy
-
-  rabbitmq:
-    image: library/rabbitmq:3.6-management-alpine
-    environment:
-      RABBITMQ_DEFAULT_USER: guest
-      RABBITMQ_DEFAULT_PASS: guest
-    networks:
-      - proxy
+      proxy:
+        ipv4_address: 172.45.0.200
 
 networks:
   proxy:
     external:
-      name: development_infra
+      name: serverinfrastructures_infra
