@@ -1,5 +1,3 @@
-'use strict'
-
 const path = require('path')
 const nconf = require('nconf')
 const _ = require('lodash')
@@ -52,7 +50,7 @@ const GoogleHandler = (req, res) => {
 nconf.argv().env().file({ file: 'nconf.json' })
 
 module.exports = {
-  env: nconf.get('ABIBAO_ENV') || 'deve',
+  env: process.env.NODE_ENV,
   host: nconf.get('ABIBAO_SERVICE_HOST') || '0.0.0.0',
   port: nconf.get('ABIBAO_SERVICE_PORT') || 3000,
   domains: {

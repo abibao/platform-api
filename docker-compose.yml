@@ -1,20 +1,41 @@
-version: "2"
+version: "3.2"
 
 services:
 
   api:
-    image: library/node:6-alpine
+    image: library/node:8-alpine
     working_dir: /code
+    networks:
+      - proxy
+    ports:
+      - 9000:9000
+    environment:
+      VIRTUAL_HOST: abibao.api.127.0.0.1.xip.io
+      VIRTUAL_PORT: 9000
+      LETSENCRYPT_HOST: abibao.api.127.0.0.1.xip.io
+      LETSENCRYPT_EMAIL: team@abibao.com
+      NODE_ENV: development
+      ABIBAO_SERVICE_HOST: '0.0.0.0'
+      ABIBAO_SERVICE_PORT: 9000
+      ABIBAO_DOMAIN_API: http://abibao.api.127.0.0.1.xip.io
+      ABIBAO_DOMAIN_ADMIN: http://abibao.platform.127.0.0.1.xip.io
+      ABIBAO_DOMAIN_READER: http://abibao.platform.127.0.0.1.xip.io
+      ABIBAO_COUCHDB_HOST: couchdb
+      ABIBAO_COUCHDB_PASSWORD: C15F3DC1ABA345CEA4A4AC08F2135431
+      ABIBAO_POSTGRES_HOST: postgres
+      ABIBAO_POSTGRES_PASSWORD: 809292EEB67D4ADE80A00388ABD1C740
+      ABIBAO_POSTGRES_DB: platform_deve
+      ABIBAO_RABBITMQ_HOST: rabbitmq
+      ABIBAO_RABBITMQ_PASSWORD: 5B7FA6D23E834EB3B7289CEEB016575F
+      ABIBAO_LOGSTASH_HOST: logstash
+      ABIBAO_SLACK_WEBHOOK: https://hooks.slack.com/services/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
+      ABIBAO_SENDGRID_KEY: "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"
+      ABIBAO_SENDGRID_TEMPLATE_PASSWORDLESS: "5cac2df5-d2e9-417b-884a-084ad0cbd8b1"
     volumes:
       - .:/code
-    environment:
-      NODE_ENV: development
-    command: "tail -F -n0 /etc/hosts"
-    networks:
-      proxy:
-        ipv4_address: 172.45.0.200
+    command: "yarn run start:server"
 
 networks:
   proxy:
     external:
-      name: serverinfrastructures_infra
+      name: communs_default

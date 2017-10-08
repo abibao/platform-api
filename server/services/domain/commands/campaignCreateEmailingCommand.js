@@ -1,5 +1,6 @@
 const Promise = require('bluebird')
 const hooks = require('../hooks')
+const pubsub = require('../../../../config/pubsub')
 const eraro = require('eraro')({package: 'platform.abibao.com'})
 
 class Service {
@@ -28,7 +29,7 @@ class Service {
       return individuals[0]
     })
     .then((individual) => {
-      app.bus.send('BUS_EVENT_BATCH_EMAILING_SENDGRID', {
+      app.bus.send(pubsub.BUS_EVENT_BATCH_EMAILING_SENDGRID, {
         email: data.email,
         template: data.template,
         body: {

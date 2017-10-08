@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "open:coverage": "open coverage/lconv-report/index.html",
+    "start:server": "DEBUG=feathers:* node_modules/.bin/nodemon --config nodemon.json server/start.js",
     "test:standard": "node_modules/.bin/standard config/**/*.js server/**/*.js test/**/*.js | node_modules/.bin/snazzy",
     "test:coverage": "node_modules/.bin/nyc --reporter=lcov --reporter=text node_modules/.bin/mocha --opts .mocharc"
   },

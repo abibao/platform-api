@@ -1,4 +1,4 @@
-.PHONY: default up down
+.PHONY: default up down tests
 
 default: up
 
@@ -8,3 +8,7 @@ up:
 
 down:
 	docker-compose down;
+
+tests:
+	yarn run test:standard;
+	yarn run test:coverage;
